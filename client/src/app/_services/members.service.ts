@@ -16,7 +16,7 @@ export class MembersService {
   constructor(private http: HttpClient) { }
 
   getMembers() {
-    if (this.members.length > 0) return of(this.members); //of = return something of an obsevable
+    if (this.members.length > 0) return of(this.members); //of = return something of an observable
     return this.http.get<Member[]>(this.baseUrl + 'users').pipe(
       map(members => {
         this.members = members;
@@ -38,5 +38,13 @@ export class MembersService {
         this.members[index] = member;
       })
     );
+  }
+
+  setMainPhoto(photoId: number){
+    return this.http.put(this.baseUrl + 'users/set-main-photo/' + photoId, {});
+  }
+
+  deletePhoto(photoId: number){
+    return this.http.delete(this.baseUrl + 'users/delete-photo/' + photoId);
   }
 }
