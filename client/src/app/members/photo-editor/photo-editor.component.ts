@@ -70,8 +70,13 @@ setMainPhoto(photo: Photo){
     this.uploader.onSuccessItem = (item, response, status, headers) => {
       //if it got a response
       if(response) {
-        const photo = JSON.parse(response); //converts a JSON string into an object
+        const photo: Photo = JSON.parse(response); //converts a JSON string into an object
         this.member.photos.push(photo); //add the photo into the photos array
+        if(photo.isMain) {
+          this.user.photoUrl = photo.url;
+          this.member.photoUrl = photo.url;
+          this.accountService.setCurrentUser(this.user)
+        }
       }
     }
 
