@@ -18,16 +18,12 @@ export class AdminGuard implements CanActivate {
         if (user.roles.includes('Admin') || user.roles.includes('Moderator')) {
           return true;
         }
-<<<<<<< HEAD
         else
         {
           this.toastr.error('You cannot enter this area!');
           return false;
         }
         
-=======
-        this.toastr.error('You cannot enter this area!');
->>>>>>> f88f9dfc7603d8612538a25476ab85304ebc32d7
       })
     );
   }

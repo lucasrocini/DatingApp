@@ -53,9 +53,6 @@ export class AccountService {
     this.presence.stopHubConnection();
   }
 
-  getDecodedToken(token){
-    return JSON.parse(atob(token.split('.')[1]));   //[1] is the payload
-  }
 
   getDecodedToken(token){
     return JSON.parse(atob(token.split('.')[1]));   //[1] is the payload
